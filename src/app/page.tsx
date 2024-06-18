@@ -1,3 +1,4 @@
+import Banner from "@/components/Banner";
 import Image from "next/image";
 
 export default function Home() {
@@ -7,7 +8,7 @@ export default function Home() {
     //By Using The Feature Of Layouts In Next Js We Can Remove Duplication
     //So Paste It Above Children Component Of Body Part
     <>
-      <h1>Welcome to elib client app</h1>
+      <Banner />
     </>
   );
 }
