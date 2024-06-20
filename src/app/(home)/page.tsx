@@ -2,16 +2,11 @@ import Banner from "@/app/(home)/components/Banner";
 import Image from "next/image";
 import BookList from "./components/BookList";
 import { Book } from "@/types";
+import { Suspense } from "react";
+import Loading from "@/components/Loading";
 export default async function Home() {
   //data fetching
   //console.log("url", process.env.NEXT_PUBLIC_BACKEND_URL);
-  const response = await fetch(`${process.env.BACKEND_URL}/books`, {
-    cache: "no-store",
-  });
-  if (!response.ok) {
-    throw new Error("An Error Occured While Fetching The Books");
-  }
-  const books: Book[] = await response.json();
   //console.log("Books:", books);
   //server component
   //client component
@@ -22,7 +17,9 @@ export default async function Home() {
     //So Paste It Above Children Component Of Body Part
     <>
       <Banner />
-      <BookList books={books} />
+      <Suspense fallback={<Loading />}>
+        <BookList />
+      </Suspense>
     </>
   );
 }
