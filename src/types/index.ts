@@ -6,6 +6,5 @@ export type Book = {
   file: string;
   author: {
     name: string;
-    _id: string;
   };
 };
